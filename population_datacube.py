@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import csv
 import pandas as pd
-
+from urllib.parse import quote
 
 
 import rdflib 
@@ -15,16 +15,16 @@ NSR = Namespace("https://example.org/resources/")
 # https://rdflib.readthedocs.io/en/stable/_modules/rdflib/namespace/_RDFS.html
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
-SDMX_SUBJECT = Namespace(" http://purl.org/linked-data/sdmx/2009/subject#")
-SDMX_CONCEPT = Namespace(" http://purl.org/linked-data/sdmx/2009/concept#")
-SDMX_MEASURE = Namespace(" http://purl.org/linked-data/sdmx/2009/measure#")
+SDMX_SUBJECT = Namespace("http://purl.org/linked-data/sdmx/2009/subject#")
+SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
+SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 
 def main():
     required_columns = ['vuzemi_cis','vuzemi_kod','vuk','hodnota']
     df = pd.read_csv('data/population.csv',usecols=required_columns)
-    df = df[(df['vuk']=='DEM0004') & (df['vuzemi_cis']=='101')]
-
+    df = df[(df['vuk']=='DEM0004') & (df['vuzemi_cis']==101)]
+    print(df)
     okresy_mapper = pd.read_csv('data/okresy.csv',usecols=['kodrso','chodnota'])
     okresy_mapper = okresy_mapper.set_index('kodrso').squeeze().to_dict()
     okresy_to_kraje = pd.read_csv('data/okresy_to_kraje.csv',usecols=['chodnota1','chodnota2'])
@@ -33,12 +33,13 @@ def main():
     kraje_mapper = kraje_mapper.set_index('chodnota').squeeze().to_dict()
 
 
-    df['krajCode'] = df['vuzemi_kod'].replace({"vuzemi_kod": okresy_to_kraje}).replace({"vuzemi_kod": kraje_mapper})
+    df['krajCode'] = df.replace({"vuzemi_kod": okresy_to_kraje}).replace({"vuzemi_kod": kraje_mapper})['vuzemi_kod']
     df = df.replace({"vuzemi_kod": okresy_mapper})
     df = df.rename(columns={"vuzemi_kod": "okresCode",'hodnota':'population'})
     
     data_cube = as_data_cube(df.to_dict(orient='records'))
-    # print(data_cube.serialize(format="ttl"))
+    with open('population_datacube.ttl','wb') as f:
+        f.write(data_cube.serialize(format="ttl",encoding='utf-8'))
     run_constraint_checks(data_cube)
     print("-" * 80)
 
@@ -55,7 +56,6 @@ def load_csv_file_as_object(file_path: str):
 
 def as_data_cube(data):
     result = rdflib.Graph()
-    # result = rdflib.ConjunctiveGraph()
     dimensions = create_dimensions(result)
     measures = create_measure(result)
     structure = create_structure(result, dimensions, measures)
@@ -73,16 +73,14 @@ def create_dimensions(collector: Graph):
     collector.add((okres, RDFS.label, Literal("County", lang="en")))
     collector.add((okres, SKOS.prefLabel, Literal("County")))
     collector.add((okres, RDFS.range, XSD.string))
-    collector.add((okres, RDFS.range, SDMX_CONCEPT.refArea))
 
     kraj = NS.kraj
     collector.add((kraj, RDF.type, RDFS.Property))
     collector.add((kraj, RDF.type, QB.DimensionProperty))
-    collector.add((kraj, RDFS.label, Literal("kraj", lang="cs")))
+    collector.add((kraj, RDFS.label, Literal("Kraj", lang="cs")))
     collector.add((kraj, RDFS.label, Literal("County", lang="en")))
     collector.add((kraj, SKOS.prefLabel, Literal("County")))
     collector.add((kraj, RDFS.range, XSD.string))
-    collector.add((kraj, RDFS.range, SDMX_CONCEPT.refArea))
 
 
 
@@ -95,7 +93,7 @@ def create_measure(collector: Graph):
     collector.add( ( mean_population, RDF.type, RDFS.Property) )
     
     collector.add( ( mean_population, RDF.type, QB.MeasureProperty ) )
-    collector.add( ( mean_population, RDFS.label, Literal("Střední stav obyvatel", lang="cs") ) )
+    collector.add( ( mean_population, RDFS.label, Literal("Stredni stav obyvatel", lang="cs") ) )
     collector.add( ( mean_population, RDFS.label, Literal("Mean population", lang="en") ) )
     collector.add( ( mean_population, SKOS.prefLabel, Literal("Mean population")))
     collector.add( ( mean_population, RDFS.range, XSD.integer ) )
@@ -154,8 +152,8 @@ def create_observations(collector: Graph, dataset, data):
 def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, RDF.type, QB.Observation))
     collector.add((resource, QB.dataSet, dataset))
-    collector.add((resource, NS.okres, Literal(data["OkresCode"])))
-    collector.add((resource, NS.kraj, Literal(data["KrajCode"])))
+    collector.add((resource, NS.okres, Literal(data["okresCode"])))
+    collector.add((resource, NS.kraj, Literal(data["krajCode"])))
     collector.add((resource, NS.mean_population, Literal(data["population"], datatype=XSD.integer)))
 
 def convert_date(value):

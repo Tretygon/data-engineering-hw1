@@ -15,9 +15,9 @@ NSR = Namespace("https://example.org/resources/")
 # https://rdflib.readthedocs.io/en/stable/_modules/rdflib/namespace/_RDFS.html
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
-SDMX_SUBJECT = Namespace(" http://purl.org/linked-data/sdmx/2009/subject#")
-SDMX_CONCEPT = Namespace(" http://purl.org/linked-data/sdmx/2009/concept#")
-SDMX_MEASURE = Namespace(" http://purl.org/linked-data/sdmx/2009/measure#")
+SDMX_SUBJECT = Namespace("http://purl.org/linked-data/sdmx/2009/subject#")
+SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
+SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 
 def main():
@@ -25,7 +25,9 @@ def main():
     df = pd.read_csv('data/zdravotnici.csv',usecols=required_columns)
     df = df.groupby(required_columns).size().reset_index(name ='Count')
     data_cube = as_data_cube(df.to_dict(orient='records'))
-    # print(data_cube.serialize(format="ttl"))
+
+    with open('zdravotnici_datacube.ttl','wb') as f:
+        f.write(data_cube.serialize(format="ttl",encoding='utf-8'))
     run_constraint_checks(data_cube)
     print("-" * 80)
 
@@ -59,21 +61,19 @@ def create_dimensions(collector: Graph):
     collector.add((okres, RDFS.label, Literal("County", lang="en")))
     collector.add((okres, SKOS.prefLabel, Literal("County")))
     collector.add((okres, RDFS.range, XSD.string))
-    collector.add((okres, RDFS.range, SDMX_CONCEPT.refArea))
 
     kraj = NS.kraj
     collector.add((kraj, RDF.type, RDFS.Property))
     collector.add((kraj, RDF.type, QB.DimensionProperty))
-    collector.add((kraj, RDFS.label, Literal("kraj", lang="cs")))
+    collector.add((kraj, RDFS.label, Literal("Kraj", lang="cs")))
     collector.add((kraj, RDFS.label, Literal("County", lang="en")))
     collector.add((kraj, SKOS.prefLabel, Literal("County")))
     collector.add((kraj, RDFS.range, XSD.string))
-    collector.add((kraj, RDFS.range, SDMX_CONCEPT.refArea))
 
     obor_pece = NS.obor_pece
     collector.add((obor_pece, RDF.type, RDFS.Property))
     collector.add((obor_pece, RDF.type, QB.DimensionProperty))
-    collector.add((obor_pece, RDFS.label, Literal("Obor péče", lang="cs")))
+    collector.add((obor_pece, RDFS.label, Literal("Obor pece", lang="cs")))
     collector.add((obor_pece, RDFS.label, Literal("Field of care", lang="en")))
     collector.add((obor_pece, SKOS.prefLabel, Literal("Field of care")))
     collector.add((obor_pece, RDFS.range, XSD.string))
@@ -88,7 +88,7 @@ def create_measure(collector: Graph):
     number_of_care_providers = NS.number_of_care_providers
     collector.add( ( number_of_care_providers, RDF.type, RDFS.Property) )
     collector.add( ( number_of_care_providers, RDF.type, QB.MeasureProperty ) )
-    collector.add( ( number_of_care_providers, RDFS.label, Literal("Počet poskytovatelů péče", lang="cs") ) )
+    collector.add( ( number_of_care_providers, RDFS.label, Literal("Pocet poskytovatelu pece", lang="cs") ) )
     collector.add( ( number_of_care_providers, RDFS.label, Literal("Number of care providers", lang="en") ) )
     collector.add((number_of_care_providers, SKOS.prefLabel, Literal("Number of care providers")))
     collector.add( ( number_of_care_providers, RDFS.range, XSD.integer ) )
@@ -121,7 +121,7 @@ def create_dataset(collector: Graph, structure):
     dataset = NSR.dataCubeInstance
 
     collector.add((dataset, RDF.type, QB.DataSet))
-    collector.add((dataset, RDFS.label, Literal("Poskytovatelé zdravotních služeb", lang="cs")))
+    collector.add((dataset, RDFS.label, Literal("Poskytovatele zdravotnich sluzeb", lang="cs")))
     collector.add((dataset, RDFS.label, Literal("Care Providers", lang="en")))
     collector.add((dataset, QB.structure, structure))
 

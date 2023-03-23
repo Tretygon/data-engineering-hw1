@@ -1,5 +1,3 @@
-requires pandas and rdflib installed 
-
 Obyvatelé okresy 2021 datacube:
 	python population_datacube.py
 
