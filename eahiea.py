@@ -2,9 +2,8 @@
 import csv
 import pandas as pd
 from urllib.parse import quote
-from html import escape
-
-
+import requests
+from io import StringIO 
 import rdflib 
 from rdflib import Graph, BNode, Literal, Namespace
 # See https://rdflib.readthedocs.io/en/latest/_modules/rdflib/namespace.html
@@ -16,9 +15,6 @@ NSR = Namespace("https://example.org/resources/")
 # https://rdflib.readthedocs.io/en/stable/_modules/rdflib/namespace/_RDFS.html
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
-OKRESY = Namespace("https://example.org/okresy/")
-KRAJE = Namespace("https://example.org/kraje/")
-OBORY = Namespace("https://example.org/obor-pece/")
 SDMX_SUBJECT = Namespace("http://purl.org/linked-data/sdmx/2009/subject#")
 SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
@@ -26,7 +22,9 @@ SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 def main():
     required_columns = ['vuzemi_cis','vuzemi_kod','vuk','hodnota']
-    df = pd.read_csv('data/population.csv',usecols=required_columns)
+    with requests.get('https://www.czso.cz/documents/10180/184344914/130141-22data2021.csv', stream=True) as r:
+        df = pd.read_csv(StringIO(r.content.decode('utf-8')))
+    
     df = df[(df['vuk']=='DEM0004') & (df['vuzemi_cis']==101)]
     okresy_mapper = pd.read_csv('data/okresy.csv',usecols=['kodrso','chodnota'])
     okresy_mapper = okresy_mapper.set_index('kodrso').squeeze().to_dict()
@@ -41,20 +39,11 @@ def main():
     df = df.rename(columns={"vuzemi_kod": "okresCode",'hodnota':'population'})
     
     data_cube = as_data_cube(df.to_dict(orient='records'))
-    with open('population_datacube.ttl','wb') as f:
+    with open('population.ttl','wb') as f:
         f.write(data_cube.serialize(format="ttl",encoding='utf-8'))
     run_constraint_checks(data_cube)
     print("-" * 80)
 
-
-def load_csv_file_as_object(file_path: str):
-    result = []
-    with open(file_path, "r") as stream:
-        reader = csv.reader(stream)
-        header = next(reader)  # Skip header
-        for line in reader:
-            result.append({key: value for key, value in zip(header, line)})
-    return result
 
 
 def as_data_cube(data):
@@ -155,13 +144,12 @@ def create_observations(collector: Graph, dataset, data):
 def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, RDF.type, QB.Observation))
     collector.add((resource, QB.dataSet, dataset))
-    collector.add((resource, NS.okres, OKRESY[escape(data["okresCode"])]))
-    collector.add((resource, NS.kraj, KRAJE[escape(data["krajCode"])]))
+    collector.add((resource, NS.okres, Literal(data["okresCode"])))
+    collector.add((resource, NS.kraj, Literal(data["krajCode"])))
     collector.add((resource, NS.mean_population, Literal(data["population"], datatype=XSD.integer)))
 
-def escape(value):
-    return quote(value.replace(' ','_'))
-
+def convert_date(value):
+    return value.replace(".", "-")
 
 def run_constraint_checks(graph: Graph):
     import constrains

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import csv
 import pandas as pd
-
-
+import html
+from urllib.parse import quote
 
 import rdflib 
 from rdflib import Graph, BNode, Literal, Namespace
@@ -15,6 +15,9 @@ NSR = Namespace("https://example.org/resources/")
 # https://rdflib.readthedocs.io/en/stable/_modules/rdflib/namespace/_RDFS.html
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 DCT = Namespace("http://purl.org/dc/terms/")
+OKRESY = Namespace("https://example.org/okresy/")
+KRAJE = Namespace("https://example.org/kraje/")
+OBORY = Namespace("https://example.org/obor-pece/")
 SDMX_SUBJECT = Namespace("http://purl.org/linked-data/sdmx/2009/subject#")
 SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
@@ -147,13 +150,13 @@ def create_observations(collector: Graph, dataset, data):
 def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, RDF.type, QB.Observation))
     collector.add((resource, QB.dataSet, dataset))
-    collector.add((resource, NS.okres, Literal(data["OkresCode"])))
-    collector.add((resource, NS.kraj, Literal(data["KrajCode"])))
-    collector.add((resource, NS.obor_pece, Literal(data["DruhZarizeni"])))
+    collector.add((resource, NS.okres, OKRESY[escape(data["OkresCode"])]))
+    collector.add((resource, NS.kraj, KRAJE[escape(data["KrajCode"])]))
+    collector.add((resource, NS.obor_pece, OBORY[escape(data["DruhZarizeni"])]))
     collector.add((resource, NS.number_of_care_providers, Literal(data["Count"], datatype=XSD.integer)))
 
-def convert_date(value):
-    return value.replace(".", "-")
+def escape(value):
+    return quote(value.replace(' ','_'))
 
 def run_constraint_checks(graph: Graph):
     import constrains
