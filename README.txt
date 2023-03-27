@@ -1,8 +1,11 @@
+
+spustit se da budto pres airflow, nebo samostatne se daji pouzit scripty:
+
 Obyvatelé okresy 2021 datacube:
-	python population_datacube.py
+	python population.py
 
 Poskytovatelé zdravotních služeb datacube:
-	python zdravotnici_datacube.py
+	python care_providers.py
 	
 
 Integrity constrains jsou v constrains.py ve forme [string]. 
