@@ -162,10 +162,10 @@ def escape(value):
     return quote(value.replace(' ','_'))
 
 def run_constraint_checks(graph: Graph):
-    import constrains as constrains
+    from .constrains import integrity_queries
     graph.namespace_manager.bind('qb',QB)
     graph.namespace_manager.bind('skos',SKOS)
-    for query in constrains.integrity_queries:
+    for query in integrity_queries:
         result = graph.query(query)
         assert not result.askAnswer, 'The datacube is not well formed'
     print('All tests have passed => the datacube is well formed')

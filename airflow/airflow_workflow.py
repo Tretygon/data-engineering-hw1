@@ -13,6 +13,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 from src import population
 from src import care_providers
+from src import constrains
 sys.path.pop()
 
 
@@ -46,7 +47,7 @@ with DAG(
     dag_id="data-cubes",
     description='cubes',
     default_args=dag_args,
-    start_date=datetime(2023, 3, 3),
+    start_date=datetime(2023, 3, 28),
     schedule=None,
     catchup=False,
     tags=["NDBI046"],   
@@ -55,9 +56,4 @@ with DAG(
     # no reason for any ordering of the tasks, so they are just called 
     population_cube()
     care_providers_cube()
-    
-
-    # task_a = empty.EmptyOperator(task_id="task_a")
-    # task_b = empty.EmptyOperator(task_id="task_b")
-    # task_a >> task_b
     
