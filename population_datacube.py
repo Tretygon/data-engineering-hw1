@@ -3,12 +3,12 @@ import csv
 import pandas as pd
 from urllib.parse import quote
 from html import escape
-
+from provenance import add_provenance
 
 import rdflib 
 from rdflib import Graph, BNode, Literal, Namespace
 # See https://rdflib.readthedocs.io/en/latest/_modules/rdflib/namespace.html
-from rdflib.namespace import QB, RDF, XSD,SKOS
+from rdflib.namespace import QB, RDF, XSD,SKOS, PROV
 
 NS = Namespace("https://example.org/ontology#")
 NSR = Namespace("https://example.org/resources/")
@@ -24,7 +24,7 @@ SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 
-def main():
+def get_rdf():
     required_columns = ['vuzemi_cis','vuzemi_kod','vuk','hodnota']
     df = pd.read_csv('data/population.csv',usecols=required_columns)
     df = df[(df['vuk']=='DEM0004') & (df['vuzemi_cis']==101)]
@@ -41,11 +41,15 @@ def main():
     df = df.rename(columns={"vuzemi_kod": "okresCode",'hodnota':'population'})
     
     data_cube = as_data_cube(df.to_dict(orient='records'))
-    with open('population_datacube.ttl','wb') as f:
-        f.write(data_cube.serialize(format="ttl",encoding='utf-8'))
+   
     run_constraint_checks(data_cube)
-    print("-" * 80)
 
+    return data_cube
+
+def save_rdf(graph,format='trig'):
+    with open(f'population_datacube.{format}','wb') as f:
+        f.write(graph.serialize(format=format,encoding='utf-8'))
+    
 
 def load_csv_file_as_object(file_path: str):
     result = []
@@ -128,6 +132,8 @@ def create_dataset(collector: Graph, structure):
 
     dataset = NSR.dataCubeInstance
 
+    collector.add((dataset, RDF.type, PROV.Entity))
+
     collector.add((dataset, RDF.type, QB.DataSet))
     collector.add((dataset, RDFS.label, Literal("Pocet obyvatel okresu", lang="cs")))
     collector.add((dataset, RDFS.label, Literal("County population", lang="en")))
@@ -173,4 +179,6 @@ def run_constraint_checks(graph: Graph):
     print('All tests have passed => the datacube is well formed')
 
 if __name__ == "__main__":
-    main()
+    graph = get_rdf()
+    add_provenance(graph)
+    save_rdf(graph)

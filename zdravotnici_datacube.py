@@ -3,13 +3,14 @@ import csv
 import pandas as pd
 import html
 from urllib.parse import quote
+from provenance import add_provenance
 
 import rdflib 
 from rdflib import Graph, BNode, Literal, Namespace
 # See https://rdflib.readthedocs.io/en/latest/_modules/rdflib/namespace.html
-from rdflib.namespace import QB, RDF, XSD,SKOS
+from rdflib.namespace import QB, RDF, XSD,SKOS,PROV, FOAF
 
-NS = Namespace("https://example.org/ontology#")
+NS = Namespace("https://example.org/ontology/")
 NSR = Namespace("https://example.org/resources/")
 # We use custom Namespace here as the generated is limited in content
 # https://rdflib.readthedocs.io/en/stable/_modules/rdflib/namespace/_RDFS.html
@@ -23,17 +24,20 @@ SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 
-def main():
+def get_rdf():
     required_columns = ['KrajCode','OkresCode','DruhZarizeni']
     df = pd.read_csv('data/zdravotnici.csv',usecols=required_columns)
     df = df.groupby(required_columns).size().reset_index(name ='Count')
     data_cube = as_data_cube(df.to_dict(orient='records'))
-
-    with open('zdravotnici_datacube.ttl','wb') as f:
-        f.write(data_cube.serialize(format="ttl",encoding='utf-8'))
     run_constraint_checks(data_cube)
-    print("-" * 80)
+    return data_cube
+    
 
+
+def save_rdf(graph,format='trig'):
+    with open(f'zdravotnici_datacube.{format}','wb') as f:
+        f.write(graph.serialize(format=format,encoding='utf-8'))
+    
 
 def load_csv_file_as_object(file_path: str):
     result = []
@@ -122,6 +126,8 @@ def create_structure(collector: Graph, dimensions, measures):
 def create_dataset(collector: Graph, structure):
 
     dataset = NSR.dataCubeInstance
+    
+    collector.add((dataset, RDF.type, PROV.Entity))
 
     collector.add((dataset, RDF.type, QB.DataSet))
     collector.add((dataset, RDFS.label, Literal("Poskytovatele zdravotnich sluzeb", lang="cs")))
@@ -168,4 +174,6 @@ def run_constraint_checks(graph: Graph):
     print('All tests have passed => the datacube is well formed')
 
 if __name__ == "__main__":
-    main()
+    graph = get_rdf()
+    add_provenance(graph)
+    save_rdf(graph)

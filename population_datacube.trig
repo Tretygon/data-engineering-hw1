@@ -1,0 +1,527 @@
+@prefix ns1: <https://example.org/ontology#> .
+@prefix ns2: <http://purl.org/dc/terms/> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix ns4: <https://example.org/ontology/> .
+@prefix ns5: <http://xmlns.com/foaf/0.1/> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+_:N2a8b9d0f68554ea7aa2f33adc6aae67e {
+    ns4:datasetCreationActivity a ns3:Activity ;
+        ns3:qualifiedAssociation ns4:datasetCreationAssociation .
+
+    ns4:programmer a ns3:Role .
+
+    <https://example.org/resources/observation-000> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 116930 ;
+        ns1:okres <https://example.org/okresy/CZ0427> .
+
+    <https://example.org/resources/observation-001> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ052> ;
+        ns1:mean_population 78479 ;
+        ns1:okres <https://example.org/okresy/CZ0524> .
+
+    <https://example.org/resources/observation-002> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ051> ;
+        ns1:mean_population 71593 ;
+        ns1:okres <https://example.org/okresy/CZ0514> .
+
+    <https://example.org/resources/observation-003> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ052> ;
+        ns1:mean_population 78763 ;
+        ns1:okres <https://example.org/okresy/CZ0522> .
+
+    <https://example.org/resources/observation-004> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ053> ;
+        ns1:mean_population 103657 ;
+        ns1:okres <https://example.org/okresy/CZ0531> .
+
+    <https://example.org/resources/observation-005> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 378424 ;
+        ns1:okres <https://example.org/okresy/CZ0642> .
+
+    <https://example.org/resources/observation-006> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 114758 ;
+        ns1:okres <https://example.org/okresy/CZ0644> .
+
+    <https://example.org/resources/observation-007> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 100584 ;
+        ns1:okres <https://example.org/okresy/CZ0208> .
+
+    <https://example.org/resources/observation-008> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 91984 ;
+        ns1:okres <https://example.org/okresy/CZ0646> .
+
+    <https://example.org/resources/observation-009> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ071> ;
+        ns1:mean_population 107697 ;
+        ns1:okres <https://example.org/okresy/CZ0713> .
+
+    <https://example.org/resources/observation-010> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ071> ;
+        ns1:mean_population 126826 ;
+        ns1:okres <https://example.org/okresy/CZ0714> .
+
+    <https://example.org/resources/observation-011> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 84661 ;
+        ns1:okres <https://example.org/okresy/CZ0322> .
+
+    <https://example.org/resources/observation-012> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 48587 ;
+        ns1:okres <https://example.org/okresy/CZ0326> .
+
+    <https://example.org/resources/observation-013> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ041> ;
+        ns1:mean_population 88030 ;
+        ns1:okres <https://example.org/okresy/CZ0411> .
+
+    <https://example.org/resources/observation-014> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ072> ;
+        ns1:mean_population 140392 ;
+        ns1:okres <https://example.org/okresy/CZ0723> .
+
+    <https://example.org/resources/observation-015> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ072> ;
+        ns1:mean_population 188947 ;
+        ns1:okres <https://example.org/okresy/CZ0724> .
+
+    <https://example.org/resources/observation-016> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 108889 ;
+        ns1:okres <https://example.org/okresy/CZ0206> .
+
+    <https://example.org/resources/observation-017> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 186558 ;
+        ns1:okres <https://example.org/okresy/CZ0209> .
+
+    <https://example.org/resources/observation-018> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 54767 ;
+        ns1:okres <https://example.org/okresy/CZ020C> .
+
+    <https://example.org/resources/observation-019> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 70582 ;
+        ns1:okres <https://example.org/okresy/CZ0314> .
+
+    <https://example.org/resources/observation-020> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 187985 ;
+        ns1:okres <https://example.org/okresy/CZ0323> .
+
+    <https://example.org/resources/observation-021> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 126492 ;
+        ns1:okres <https://example.org/okresy/CZ0421> .
+
+    <https://example.org/resources/observation-022> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ052> ;
+        ns1:mean_population 162193 ;
+        ns1:okres <https://example.org/okresy/CZ0521> .
+
+    <https://example.org/resources/observation-023> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 212422 ;
+        ns1:okres <https://example.org/okresy/CZ0802> .
+
+    <https://example.org/resources/observation-024> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 60033 ;
+        ns1:okres <https://example.org/okresy/CZ0312> .
+
+    <https://example.org/resources/observation-025> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 80228 ;
+        ns1:okres <https://example.org/okresy/CZ0325> .
+
+    <https://example.org/resources/observation-026> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 95823 ;
+        ns1:okres <https://example.org/okresy/CZ0202> .
+
+    <https://example.org/resources/observation-027> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 127221 ;
+        ns1:okres <https://example.org/okresy/CZ0207> .
+
+    <https://example.org/resources/observation-028> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ071> ;
+        ns1:mean_population 36884 ;
+        ns1:okres <https://example.org/okresy/CZ0711> .
+
+    <https://example.org/resources/observation-029> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 75402 ;
+        ns1:okres <https://example.org/okresy/CZ0205> .
+
+    <https://example.org/resources/observation-030> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 99008 ;
+        ns1:okres <https://example.org/okresy/CZ0201> .
+
+    <https://example.org/resources/observation-031> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 149990 ;
+        ns1:okres <https://example.org/okresy/CZ020A> .
+
+    <https://example.org/resources/observation-032> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 114060 ;
+        ns1:okres <https://example.org/okresy/CZ020B> .
+
+    <https://example.org/resources/observation-033> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 194994 ;
+        ns1:okres <https://example.org/okresy/CZ0311> .
+
+    <https://example.org/resources/observation-034> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 50225 ;
+        ns1:okres <https://example.org/okresy/CZ0315> .
+
+    <https://example.org/resources/observation-035> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 89906 ;
+        ns1:okres <https://example.org/okresy/CZ0801> .
+
+    <https://example.org/resources/observation-036> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 149907 ;
+        ns1:okres <https://example.org/okresy/CZ0804> .
+
+    <https://example.org/resources/observation-037> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 312908 ;
+        ns1:okres <https://example.org/okresy/CZ0806> .
+
+    <https://example.org/resources/observation-038> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 89325 ;
+        ns1:okres <https://example.org/okresy/CZ0313> .
+
+    <https://example.org/resources/observation-039> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 54313 ;
+        ns1:okres <https://example.org/okresy/CZ0321> .
+
+    <https://example.org/resources/observation-040> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ041> ;
+        ns1:mean_population 110195 ;
+        ns1:okres <https://example.org/okresy/CZ0412> .
+
+    <https://example.org/resources/observation-041> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 68623 ;
+        ns1:okres <https://example.org/okresy/CZ0324> .
+
+    <https://example.org/resources/observation-042> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 117473 ;
+        ns1:okres <https://example.org/okresy/CZ0423> .
+
+    <https://example.org/resources/observation-043> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 124401 ;
+        ns1:okres <https://example.org/okresy/CZ0426> .
+
+    <https://example.org/resources/observation-044> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ053> ;
+        ns1:mean_population 135977 ;
+        ns1:okres <https://example.org/okresy/CZ0534> .
+
+    <https://example.org/resources/observation-045> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ051> ;
+        ns1:mean_population 101997 ;
+        ns1:okres <https://example.org/okresy/CZ0511> .
+
+    <https://example.org/resources/observation-046> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ051> ;
+        ns1:mean_population 173337 ;
+        ns1:okres <https://example.org/okresy/CZ0513> .
+
+    <https://example.org/resources/observation-047> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ052> ;
+        ns1:mean_population 108092 ;
+        ns1:okres <https://example.org/okresy/CZ0523> .
+
+    <https://example.org/resources/observation-048> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ052> ;
+        ns1:mean_population 115365 ;
+        ns1:okres <https://example.org/okresy/CZ0525> .
+
+    <https://example.org/resources/observation-049> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 113389 ;
+        ns1:okres <https://example.org/okresy/CZ0647> .
+
+    <https://example.org/resources/observation-050> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ063> ;
+        ns1:mean_population 93521 ;
+        ns1:okres <https://example.org/okresy/CZ0631> .
+
+    <https://example.org/resources/observation-051> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ053> ;
+        ns1:mean_population 171461 ;
+        ns1:okres <https://example.org/okresy/CZ0532> .
+
+    <https://example.org/resources/observation-052> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ063> ;
+        ns1:mean_population 109373 ;
+        ns1:okres <https://example.org/okresy/CZ0634> .
+
+    <https://example.org/resources/observation-053> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ071> ;
+        ns1:mean_population 118618 ;
+        ns1:okres <https://example.org/okresy/CZ0715> .
+
+    <https://example.org/resources/observation-054> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 103345 ;
+        ns1:okres <https://example.org/okresy/CZ0204> .
+
+    <https://example.org/resources/observation-055> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ063> ;
+        ns1:mean_population 71457 ;
+        ns1:okres <https://example.org/okresy/CZ0633> .
+
+    <https://example.org/resources/observation-056> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ063> ;
+        ns1:mean_population 117181 ;
+        ns1:okres <https://example.org/okresy/CZ0635> .
+
+    <https://example.org/resources/observation-057> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 107795 ;
+        ns1:okres <https://example.org/okresy/CZ0641> .
+
+    <https://example.org/resources/observation-058> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 151344 ;
+        ns1:okres <https://example.org/okresy/CZ0645> .
+
+    <https://example.org/resources/observation-059> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ053> ;
+        ns1:mean_population 102799 ;
+        ns1:okres <https://example.org/okresy/CZ0533> .
+
+    <https://example.org/resources/observation-060> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ063> ;
+        ns1:mean_population 112206 ;
+        ns1:okres <https://example.org/okresy/CZ0632> .
+
+    <https://example.org/resources/observation-061> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ064> ;
+        ns1:mean_population 224794 ;
+        ns1:okres <https://example.org/okresy/CZ0643> .
+
+    <https://example.org/resources/observation-062> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ072> ;
+        ns1:mean_population 139922 ;
+        ns1:okres <https://example.org/okresy/CZ0722> .
+
+    <https://example.org/resources/observation-063> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 241184 ;
+        ns1:okres <https://example.org/okresy/CZ0803> .
+
+    <https://example.org/resources/observation-064> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 69794 ;
+        ns1:okres <https://example.org/okresy/CZ0316> .
+
+    <https://example.org/resources/observation-065> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ071> ;
+        ns1:mean_population 233661 ;
+        ns1:okres <https://example.org/okresy/CZ0712> .
+
+    <https://example.org/resources/observation-066> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ072> ;
+        ns1:mean_population 103753 ;
+        ns1:okres <https://example.org/okresy/CZ0721> .
+
+    <https://example.org/resources/observation-067> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ080> ;
+        ns1:mean_population 173853 ;
+        ns1:okres <https://example.org/okresy/CZ0805> .
+
+    <https://example.org/resources/observation-068> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ020> ;
+        ns1:mean_population 164359 ;
+        ns1:okres <https://example.org/okresy/CZ0203> .
+
+    <https://example.org/resources/observation-069> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ041> ;
+        ns1:mean_population 85452 ;
+        ns1:okres <https://example.org/okresy/CZ0413> .
+
+    <https://example.org/resources/observation-070> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 121643 ;
+        ns1:okres <https://example.org/okresy/CZ0422> .
+
+    <https://example.org/resources/observation-071> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 107090 ;
+        ns1:okres <https://example.org/okresy/CZ0425> .
+
+    <https://example.org/resources/observation-072> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ031> ;
+        ns1:mean_population 101333 ;
+        ns1:okres <https://example.org/okresy/CZ0317> .
+
+    <https://example.org/resources/observation-073> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ051> ;
+        ns1:mean_population 90204 ;
+        ns1:okres <https://example.org/okresy/CZ0512> .
+
+    <https://example.org/resources/observation-074> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ032> ;
+        ns1:mean_population 52793 ;
+        ns1:okres <https://example.org/okresy/CZ0327> .
+
+    <https://example.org/resources/observation-075> a qb:Observation ;
+        qb:dataSet <https://example.org/resources/dataCubeInstance> ;
+        ns1:kraj <https://example.org/kraje/CZ042> ;
+        ns1:mean_population 85466 ;
+        ns1:okres <https://example.org/okresy/CZ0424> .
+
+    ns1:kraj a qb:DimensionProperty,
+            rdfs:Property ;
+        rdfs:label "Kraj"@cs,
+            "County"@en ;
+        rdfs:range xsd:string ;
+        skos:prefLabel "County" .
+
+    ns1:okres a qb:DimensionProperty,
+            rdfs:Property ;
+        rdfs:label "Okres"@cs,
+            "County"@en ;
+        rdfs:range xsd:string ;
+        skos:prefLabel "County" .
+
+    ns1:structure a qb:DataStructureDefinition ;
+        qb:component [ qb:dimension ns1:okres ],
+            [ qb:componentProperty ns1:mean_population ;
+                qb:measure ns1:mean_population ;
+                qb:measureDimension ns1:mean_population ],
+            [ qb:dimension ns1:kraj ] .
+
+    ns4:bob a ns3:Agent,
+            ns5:Person ;
+        ns5:givenName "Bob"^^xsd:string .
+
+    ns4:crappyDatabaseSystem a ns3:Agent,
+            ns3:SoftwareAgent ;
+        ns5:name "Excel"^^xsd:string .
+
+    ns4:datasetCreationAssociation a ns3:Association ;
+        ns3:agent ns4:bob ;
+        ns4:database ns4:crappyDatabaseSystem .
+
+    ns1:mean_population a qb:MeasureProperty,
+            rdfs:Property ;
+        rdfs:label "Stredni stav obyvatel"@cs,
+            "Mean population"@en ;
+        rdfs:range xsd:integer ;
+        rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue> ;
+        skos:prefLabel "Mean population" .
+
+    <https://example.org/resources/dataCubeInstance> a qb:DataSet,
+            ns3:Entity ;
+        rdfs:label "Pocet obyvatel okresu"@cs,
+            "County population"@en ;
+        ns2:comment "Population in counties of Czechia" ;
+        ns2:description "County population in Czechia" ;
+        ns2:issued "2023-01-01"^^xsd:date ;
+        ns2:publisher "Tomas Zasadil" ;
+        ns2:subject ns1:Czechia,
+            ns1:Population,
+            ns1:RegionalStatictics ;
+        qb:structure ns1:structure .
+}
+
