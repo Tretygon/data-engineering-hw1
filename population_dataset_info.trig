@@ -1,0 +1,32 @@
+@prefix ns1: <http://purl.org/dc/terms/> .
+@prefix ns2: <http://xmlns.com/foaf/0.1/> .
+@prefix ns3: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+_:N6dd83337e34c421f97d13182aaf88bf5 {
+    <https://example.org/resources/populationDataset> a ns3:Dataset ;
+        rdfs:label "Population dataset"@en ;
+        ns1:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+        ns1:creator _:N8341b6b3fdd54133a6fbe6e76e33c685 ;
+        ns1:issued "2023-01-01"^^xsd:date ;
+        ns1:modified "2023-01-01"^^xsd:date ;
+        ns1:publisher _:N8341b6b3fdd54133a6fbe6e76e33c685 ;
+        ns1:spatial <https://publications.europa.eu/resource/authority/country/CZE> ;
+        ns1:title "Population dataset"@en ;
+        ns3:distribution <https://example.org/resources/populationDatasetRDF> ;
+        ns3:keyword "czechia"@en,
+            "population"@en,
+            "region statistics"@en ;
+        ns3:theme <http://eurovoc.europa.eu/3300>,
+            <http://eurovoc.europa.eu/5860> .
+
+    <https://example.org/resources/populationDatasetRDF> a ns3:Distribution ;
+        ns1:title "RDF-trig distribution of the population dataset"@en ;
+        ns3:accessURL <https://example.org/files/population.trig> ;
+        ns3:mediaType <http://publications.europa.eu/resource/authority/file-type/RDF_TRIG> .
+
+    _:N8341b6b3fdd54133a6fbe6e76e33c685 a ns2:Person ;
+        ns2:name "Tomas Zasadil" .
+}
+

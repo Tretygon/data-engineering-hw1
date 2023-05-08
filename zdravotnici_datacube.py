@@ -77,6 +77,15 @@ def create_dimensions(collector: Graph):
     collector.add((kraj, SKOS.prefLabel, Literal("County")))
     collector.add((kraj, RDFS.range, XSD.string))
 
+    administrativeArea = NS.administrativeArea
+    collector.add((administrativeArea,RDF.type, SKOS.Concept))
+    collector.add((kraj, SKOS.broader, administrativeArea))
+    collector.add((administrativeArea, SKOS.narrower, kraj))
+    collector.add((okres, SKOS.broader, administrativeArea))
+    collector.add((administrativeArea, SKOS.narrower, okres))
+    collector.add((okres,SKOS.related, kraj))
+    collector.add((administrativeArea, RDFS.label, Literal("An area with its own administration", lang="en")))
+
     obor_pece = NS.obor_pece
     collector.add((obor_pece, RDF.type, RDFS.Property))
     collector.add((obor_pece, RDF.type, QB.DimensionProperty))

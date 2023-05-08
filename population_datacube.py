@@ -8,7 +8,7 @@ from provenance import add_provenance
 import rdflib 
 from rdflib import Graph, BNode, Literal, Namespace
 # See https://rdflib.readthedocs.io/en/latest/_modules/rdflib/namespace.html
-from rdflib.namespace import QB, RDF, XSD,SKOS, PROV
+from rdflib.namespace import QB, RDF, XSD,SKOS, PROV, DCAT
 
 NS = Namespace("https://example.org/ontology#")
 NSR = Namespace("https://example.org/resources/")
@@ -22,7 +22,6 @@ OBORY = Namespace("https://example.org/obor-pece/")
 SDMX_SUBJECT = Namespace("http://purl.org/linked-data/sdmx/2009/subject#")
 SDMX_CONCEPT = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
-
 
 def get_rdf():
     required_columns = ['vuzemi_cis','vuzemi_kod','vuk','hodnota']
@@ -76,6 +75,7 @@ def create_dimensions(collector: Graph):
     okres = NS.okres
     collector.add((okres, RDF.type, RDFS.Property))
     collector.add((okres, RDF.type, QB.DimensionProperty))
+    collector.add((okres, RDF.type, SKOS.Concept))
     collector.add((okres, RDFS.label, Literal("Okres", lang="cs")))
     collector.add((okres, RDFS.label, Literal("County", lang="en")))
     collector.add((okres, SKOS.prefLabel, Literal("County")))
@@ -83,11 +83,22 @@ def create_dimensions(collector: Graph):
 
     kraj = NS.kraj
     collector.add((kraj, RDF.type, RDFS.Property))
+    collector.add((kraj, RDF.type, SKOS.Concept))
     collector.add((kraj, RDF.type, QB.DimensionProperty))
     collector.add((kraj, RDFS.label, Literal("Kraj", lang="cs")))
-    collector.add((kraj, RDFS.label, Literal("County", lang="en")))
-    collector.add((kraj, SKOS.prefLabel, Literal("County")))
+    collector.add((kraj, RDFS.label, Literal("Region", lang="en")))
+    collector.add((kraj, SKOS.prefLabel, Literal("Region")))
     collector.add((kraj, RDFS.range, XSD.string))
+
+    administrativeArea = NS.administrativeArea
+    collector.add((administrativeArea,RDF.type, SKOS.Concept))
+    collector.add((kraj, SKOS.broader, administrativeArea))
+    collector.add((administrativeArea, SKOS.narrower, kraj))
+    collector.add((okres, SKOS.broader, administrativeArea))
+    collector.add((administrativeArea, SKOS.narrower, okres))
+    collector.add((okres,SKOS.related, kraj))
+    collector.add((administrativeArea, RDFS.label, Literal("An area with its own administration", lang="en")))
+
 
 
 

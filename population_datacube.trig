@@ -1,18 +1,18 @@
 @prefix ns1: <https://example.org/ontology#> .
 @prefix ns2: <http://purl.org/dc/terms/> .
-@prefix ns3: <http://www.w3.org/ns/prov#> .
-@prefix ns4: <https://example.org/ontology/> .
-@prefix ns5: <http://xmlns.com/foaf/0.1/> .
+@prefix ns3: <http://xmlns.com/foaf/0.1/> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix ns5: <https://example.org/ontology/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:N2a8b9d0f68554ea7aa2f33adc6aae67e {
-    ns4:datasetCreationActivity a ns3:Activity ;
-        ns3:qualifiedAssociation ns4:datasetCreationAssociation .
+_:Nd00f70cc58334c8587e39dd5a696e332 {
+    ns5:datasetCreationActivity a ns4:Activity ;
+        ns4:qualifiedAssociation ns5:datasetCreationAssociation .
 
-    ns4:programmer a ns3:Role .
+    ns5:programmer a ns4:Role .
 
     <https://example.org/resources/observation-000> a qb:Observation ;
         qb:dataSet <https://example.org/resources/dataCubeInstance> ;
@@ -470,38 +470,48 @@ _:N2a8b9d0f68554ea7aa2f33adc6aae67e {
         ns1:mean_population 85466 ;
         ns1:okres <https://example.org/okresy/CZ0424> .
 
-    ns1:kraj a qb:DimensionProperty,
-            rdfs:Property ;
-        rdfs:label "Kraj"@cs,
-            "County"@en ;
-        rdfs:range xsd:string ;
-        skos:prefLabel "County" .
-
-    ns1:okres a qb:DimensionProperty,
-            rdfs:Property ;
-        rdfs:label "Okres"@cs,
-            "County"@en ;
-        rdfs:range xsd:string ;
-        skos:prefLabel "County" .
-
     ns1:structure a qb:DataStructureDefinition ;
-        qb:component [ qb:dimension ns1:okres ],
+        qb:component [ qb:dimension ns1:kraj ],
             [ qb:componentProperty ns1:mean_population ;
                 qb:measure ns1:mean_population ;
                 qb:measureDimension ns1:mean_population ],
-            [ qb:dimension ns1:kraj ] .
+            [ qb:dimension ns1:okres ] .
 
-    ns4:bob a ns3:Agent,
-            ns5:Person ;
-        ns5:givenName "Bob"^^xsd:string .
+    ns5:bob a ns4:Agent,
+            ns3:Person ;
+        ns3:givenName "Bob"^^xsd:string .
 
-    ns4:crappyDatabaseSystem a ns3:Agent,
-            ns3:SoftwareAgent ;
-        ns5:name "Excel"^^xsd:string .
+    ns5:crappyDatabaseSystem a ns4:Agent,
+            ns4:SoftwareAgent ;
+        ns3:name "Excel"^^xsd:string .
 
-    ns4:datasetCreationAssociation a ns3:Association ;
-        ns3:agent ns4:bob ;
-        ns4:database ns4:crappyDatabaseSystem .
+    ns5:datasetCreationAssociation a ns4:Association ;
+        ns4:agent ns5:bob ;
+        ns5:database ns5:crappyDatabaseSystem .
+
+    ns1:administrativeArea a skos:Concept ;
+        rdfs:label "An area with its own administration"@en ;
+        skos:narrower ns1:kraj,
+            ns1:okres .
+
+    ns1:okres a qb:DimensionProperty,
+            rdfs:Property,
+            skos:Concept ;
+        rdfs:label "Okres"@cs,
+            "County"@en ;
+        rdfs:range xsd:string ;
+        skos:broader ns1:administrativeArea ;
+        skos:prefLabel "County" ;
+        skos:related ns1:kraj .
+
+    ns1:kraj a qb:DimensionProperty,
+            rdfs:Property,
+            skos:Concept ;
+        rdfs:label "Kraj"@cs,
+            "Region"@en ;
+        rdfs:range xsd:string ;
+        skos:broader ns1:administrativeArea ;
+        skos:prefLabel "Region" .
 
     ns1:mean_population a qb:MeasureProperty,
             rdfs:Property ;
@@ -512,7 +522,7 @@ _:N2a8b9d0f68554ea7aa2f33adc6aae67e {
         skos:prefLabel "Mean population" .
 
     <https://example.org/resources/dataCubeInstance> a qb:DataSet,
-            ns3:Entity ;
+            ns4:Entity ;
         rdfs:label "Pocet obyvatel okresu"@cs,
             "County population"@en ;
         ns2:comment "Population in counties of Czechia" ;
