@@ -27,6 +27,7 @@ COUNTRIES = Namespace("https://publications.europa.eu/resource/authority/country
 FILE_TYPES = Namespace("http://publications.europa.eu/resource/authority/file-type/")
 UPDATE_FREQ = Namespace("http://publications.europa.eu/resource/authority/frequency/")
 EUROVOC = Namespace("http://eurovoc.europa.eu/")
+SPDX = Namespace("https://spdx.org/rdf/terms/")
 
 
 def save_rdf(graph):
@@ -66,12 +67,12 @@ def make_graph():
     graph.add((distribution, DCAT.accessURL,NSD['population.trig']))
     graph.add((distribution, DCT.title,Literal("RDF-trig distribution of the population dataset", lang="en")))
     
-    _:distribution a dcat:Distribution ;
-  spdx:checksum [
-  a spdx:Checksum ;
-    spdx:algorithm spdx:checksumAlgorithm_sha1 ;
-    spdx:checksumValue "d423bb321b061681836d2eea74f6470e90df9d41"^^xsd:hexBinar 
-  ] .
+    checksum = d423bb321b061681836d2eea74f6470e90df9d41
+    checksum_node = BNode()
+    graph.add((checksum_node, RDF.type, SPDX.Checksum))
+    graph.add((checksum_node, SPDX.algorithm, SPDX.checksumAlgorithm_sha256))
+    graph.add((checksum_node, SPDX.checksumValue, Literal(checksum, datatype=XSD.hexBinar)))
+
 
     return graph
 
