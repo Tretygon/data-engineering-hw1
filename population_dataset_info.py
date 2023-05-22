@@ -39,8 +39,6 @@ def make_graph():
     graph = rdflib.Graph()
     dataset = NSR.populationDataset
     
-    kraj = NS.kraj
-    okres = NS.okres
     me = BNode()
     graph.add((me, RDF.type, FOAF.Person))
     graph.add((me, FOAF.name,Literal("Tomas Zasadil")))
@@ -68,6 +66,12 @@ def make_graph():
     graph.add((distribution, DCAT.accessURL,NSD['population.trig']))
     graph.add((distribution, DCT.title,Literal("RDF-trig distribution of the population dataset", lang="en")))
     
+    _:distribution a dcat:Distribution ;
+  spdx:checksum [
+  a spdx:Checksum ;
+    spdx:algorithm spdx:checksumAlgorithm_sha1 ;
+    spdx:checksumValue "d423bb321b061681836d2eea74f6470e90df9d41"^^xsd:hexBinar 
+  ] .
 
     return graph
 
