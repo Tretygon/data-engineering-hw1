@@ -1,17 +1,17 @@
 @prefix ns1: <https://example.org/ontology/> .
-@prefix ns2: <http://purl.org/dc/terms/> .
-@prefix ns3: <http://www.w3.org/ns/prov#> .
-@prefix ns4: <http://xmlns.com/foaf/0.1/> .
+@prefix ns2: <http://xmlns.com/foaf/0.1/> .
+@prefix ns3: <http://purl.org/dc/terms/> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:N4dbf7328f4fa4f668cd47cb22a641586 {
-    ns1:datasetCreationActivity a ns3:Activity ;
-        ns3:qualifiedAssociation ns1:datasetCreationAssociation .
+_:N31e10a24d07744e1bf4fb7ffc120c963 {
+    ns1:datasetCreationActivity a ns4:Activity ;
+        ns4:qualifiedAssociation ns1:datasetCreationAssociation .
 
-    ns1:programmer a ns3:Role .
+    ns1:programmer a ns4:Role .
 
     <https://example.org/resources/observation-000> a qb:Observation ;
         qb:dataSet <https://example.org/resources/dataCubeInstance> ;
@@ -16995,16 +16995,16 @@ _:N4dbf7328f4fa4f668cd47cb22a641586 {
         ns1:obor_pece <https://example.org/obor-pece/Samostatn%C3%A1_stomatologick%C3%A1_laborato%C5%99> ;
         ns1:okres <https://example.org/okresy/CZ0423> .
 
-    ns1:bob a ns3:Agent,
-            ns4:Person ;
-        ns4:givenName "Bob"^^xsd:string .
+    ns1:bob a ns4:Agent,
+            ns2:Person ;
+        ns2:givenName "Bob"^^xsd:string .
 
-    ns1:crappyDatabaseSystem a ns3:Agent,
-            ns3:SoftwareAgent ;
-        ns4:name "Excel"^^xsd:string .
+    ns1:crappyDatabaseSystem a ns4:Agent,
+            ns4:SoftwareAgent ;
+        ns2:name "Excel"^^xsd:string .
 
-    ns1:datasetCreationAssociation a ns3:Association ;
-        ns3:agent ns1:bob ;
+    ns1:datasetCreationAssociation a ns4:Association ;
+        ns4:agent ns1:bob ;
         ns1:database ns1:crappyDatabaseSystem .
 
     ns1:obor_pece a qb:DimensionProperty,
@@ -17015,17 +17015,12 @@ _:N4dbf7328f4fa4f668cd47cb22a641586 {
         skos:prefLabel "Field of care" .
 
     ns1:structure a qb:DataStructureDefinition ;
-        qb:component [ qb:dimension ns1:kraj ],
-            [ qb:dimension ns1:obor_pece ],
+        qb:component [ qb:dimension ns1:obor_pece ],
+            [ qb:dimension ns1:okres ],
             [ qb:componentProperty ns1:number_of_care_providers ;
                 qb:measure ns1:number_of_care_providers ;
                 qb:measureDimension ns1:number_of_care_providers ],
-            [ qb:dimension ns1:okres ] .
-
-    ns1:administrativeArea a skos:Concept ;
-        rdfs:label "An area with its own administration"@en ;
-        skos:narrower ns1:kraj,
-            ns1:okres .
+            [ qb:dimension ns1:kraj ] .
 
     ns1:okres a qb:DimensionProperty,
             rdfs:Property ;
@@ -17052,15 +17047,357 @@ _:N4dbf7328f4fa4f668cd47cb22a641586 {
         rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue> ;
         skos:prefLabel "Number of care providers" .
 
+    <https://example.org/okresy/CZ0315> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0325> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ020C> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0321> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0324> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0205> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0312> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0326> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0522> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ052> .
+
+    <https://example.org/okresy/CZ0633> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ063> .
+
+    <https://example.org/okresy/CZ0202> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0512> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ051> .
+
+    <https://example.org/okresy/CZ0635> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ063> .
+
+    <https://example.org/okresy/CZ0641> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0647> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0201> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0206> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0314> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0511> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ051> .
+
+    <https://example.org/okresy/CZ0634> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ063> .
+
+    <https://example.org/okresy/CZ0646> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0713> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ071> .
+
+    <https://example.org/okresy/CZ0721> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ072> .
+
+    <https://example.org/okresy/CZ0322> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0413> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ041> .
+
+    <https://example.org/okresy/CZ0531> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ053> .
+
+    <https://example.org/okresy/CZ0533> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ053> .
+
+    <https://example.org/okresy/CZ0644> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0711> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ071> .
+
+    <https://example.org/okresy/CZ020A> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0313> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0327> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0523> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ052> .
+
+    <https://example.org/okresy/CZ0631> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ063> .
+
+    <https://example.org/okresy/CZ0645> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0801> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/okresy/CZ0421> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0524> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ052> .
+
+    <https://example.org/okresy/CZ0632> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ063> .
+
+    <https://example.org/okresy/CZ0715> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ071> .
+
+    <https://example.org/okresy/CZ0204> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0208> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0316> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0424> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0643> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0723> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ072> .
+
+    <https://example.org/okresy/CZ0804> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/okresy/CZ0422> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0514> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ051> .
+
+    <https://example.org/okresy/CZ0722> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ072> .
+
+    <https://example.org/okresy/CZ0209> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0411> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ041> .
+
+    <https://example.org/okresy/CZ0423> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0714> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ071> .
+
+    <https://example.org/okresy/CZ0203> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0805> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/okresy/CZ0207> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ020B> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ020> .
+
+    <https://example.org/okresy/CZ0534> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ053> .
+
+    <https://example.org/okresy/CZ0317> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0427> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0525> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ052> .
+
+    <https://example.org/okresy/CZ0425> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0724> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ072> .
+
+    <https://example.org/okresy/CZ0311> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ031> .
+
+    <https://example.org/okresy/CZ0513> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ051> .
+
+    <https://example.org/okresy/CZ0412> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ041> .
+
+    <https://example.org/okresy/CZ0426> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ042> .
+
+    <https://example.org/okresy/CZ0532> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ053> .
+
+    <https://example.org/okresy/CZ0521> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ052> .
+
+    <https://example.org/okresy/CZ0802> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/okresy/CZ0803> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/okresy/CZ0323> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ032> .
+
+    <https://example.org/okresy/CZ0712> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ071> .
+
+    <https://example.org/okresy/CZ0642> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ064> .
+
+    <https://example.org/okresy/CZ0806> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ080> .
+
+    <https://example.org/kraje/CZ010> skos:broader <https://example.org/okresy/CZ0100> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/okresy/CZ0100> skos:inScheme ns1:administrativeArea ;
+        skos:narrower <https://example.org/kraje/CZ010> .
+
+    ns1:administrativeArea a skos:Concept,
+            skos:ConceptScheme ;
+        rdfs:label "An area with its own administration"@en ;
+        skos:narrower ns1:kraj,
+            ns1:okres .
+
+    <https://example.org/kraje/CZ041> skos:broader <https://example.org/okresy/CZ0411>,
+            <https://example.org/okresy/CZ0412>,
+            <https://example.org/okresy/CZ0413> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ051> skos:broader <https://example.org/okresy/CZ0511>,
+            <https://example.org/okresy/CZ0512>,
+            <https://example.org/okresy/CZ0513>,
+            <https://example.org/okresy/CZ0514> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ072> skos:broader <https://example.org/okresy/CZ0721>,
+            <https://example.org/okresy/CZ0722>,
+            <https://example.org/okresy/CZ0723>,
+            <https://example.org/okresy/CZ0724> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ053> skos:broader <https://example.org/okresy/CZ0531>,
+            <https://example.org/okresy/CZ0532>,
+            <https://example.org/okresy/CZ0533>,
+            <https://example.org/okresy/CZ0534> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ063> skos:broader <https://example.org/okresy/CZ0631>,
+            <https://example.org/okresy/CZ0632>,
+            <https://example.org/okresy/CZ0633>,
+            <https://example.org/okresy/CZ0634>,
+            <https://example.org/okresy/CZ0635> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ052> skos:broader <https://example.org/okresy/CZ0521>,
+            <https://example.org/okresy/CZ0522>,
+            <https://example.org/okresy/CZ0523>,
+            <https://example.org/okresy/CZ0524>,
+            <https://example.org/okresy/CZ0525> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ071> skos:broader <https://example.org/okresy/CZ0711>,
+            <https://example.org/okresy/CZ0712>,
+            <https://example.org/okresy/CZ0713>,
+            <https://example.org/okresy/CZ0714>,
+            <https://example.org/okresy/CZ0715> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ032> skos:broader <https://example.org/okresy/CZ0321>,
+            <https://example.org/okresy/CZ0322>,
+            <https://example.org/okresy/CZ0323>,
+            <https://example.org/okresy/CZ0324>,
+            <https://example.org/okresy/CZ0325>,
+            <https://example.org/okresy/CZ0326>,
+            <https://example.org/okresy/CZ0327> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ031> skos:broader <https://example.org/okresy/CZ0311>,
+            <https://example.org/okresy/CZ0312>,
+            <https://example.org/okresy/CZ0313>,
+            <https://example.org/okresy/CZ0314>,
+            <https://example.org/okresy/CZ0315>,
+            <https://example.org/okresy/CZ0316>,
+            <https://example.org/okresy/CZ0317> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ064> skos:broader <https://example.org/okresy/CZ0641>,
+            <https://example.org/okresy/CZ0642>,
+            <https://example.org/okresy/CZ0643>,
+            <https://example.org/okresy/CZ0644>,
+            <https://example.org/okresy/CZ0645>,
+            <https://example.org/okresy/CZ0646>,
+            <https://example.org/okresy/CZ0647> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ042> skos:broader <https://example.org/okresy/CZ0421>,
+            <https://example.org/okresy/CZ0422>,
+            <https://example.org/okresy/CZ0423>,
+            <https://example.org/okresy/CZ0424>,
+            <https://example.org/okresy/CZ0425>,
+            <https://example.org/okresy/CZ0426>,
+            <https://example.org/okresy/CZ0427> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ080> skos:broader <https://example.org/okresy/CZ0801>,
+            <https://example.org/okresy/CZ0802>,
+            <https://example.org/okresy/CZ0803>,
+            <https://example.org/okresy/CZ0804>,
+            <https://example.org/okresy/CZ0805>,
+            <https://example.org/okresy/CZ0806> ;
+        skos:inScheme ns1:administrativeArea .
+
+    <https://example.org/kraje/CZ020> skos:broader <https://example.org/okresy/CZ0201>,
+            <https://example.org/okresy/CZ0202>,
+            <https://example.org/okresy/CZ0203>,
+            <https://example.org/okresy/CZ0204>,
+            <https://example.org/okresy/CZ0205>,
+            <https://example.org/okresy/CZ0206>,
+            <https://example.org/okresy/CZ0207>,
+            <https://example.org/okresy/CZ0208>,
+            <https://example.org/okresy/CZ0209>,
+            <https://example.org/okresy/CZ020A>,
+            <https://example.org/okresy/CZ020B>,
+            <https://example.org/okresy/CZ020C> ;
+        skos:inScheme ns1:administrativeArea .
+
     <https://example.org/resources/dataCubeInstance> a qb:DataSet,
-            ns3:Entity ;
+            ns4:Entity ;
         rdfs:label "Poskytovatele zdravotnich sluzeb"@cs,
             "Care Providers"@en ;
-        ns2:comment "Number of different types of care providers in counties of Czechia" ;
-        ns2:description "Care Providers Czechia" ;
-        ns2:issued "2023-01-01"^^xsd:date ;
-        ns2:publisher "Tomas Zasadil" ;
-        ns2:subject ns1:Czechia,
+        ns3:comment "Number of different types of care providers in counties of Czechia" ;
+        ns3:description "Care Providers Czechia" ;
+        ns3:issued "2023-01-01"^^xsd:date ;
+        ns3:publisher "Tomas Zasadil" ;
+        ns3:subject ns1:Czechia,
             ns1:Health,
             ns1:RegionalStatictics ;
         qb:structure ns1:structure .

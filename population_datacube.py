@@ -80,8 +80,6 @@ def create_dimensions(collector: Graph):
     collector.add((okres, RDFS.label, Literal("County", lang="en")))
     collector.add((okres, SKOS.prefLabel, Literal("County")))
     collector.add((okres, RDFS.range, XSD.string))
-    graph.add((kraj, RDF.type, SKOS.Concept))
-    graph.add((okres, RDF.type, SKOS.Concept))
 
     kraj = NS.kraj
     collector.add((kraj, RDF.type, RDFS.Property))
@@ -172,16 +170,13 @@ def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, NS.okres, okres))
     collector.add((resource, NS.kraj, kraj))
     collector.add((resource, NS.mean_population, Literal(data["population"], datatype=XSD.integer)))
-
-
     collector.add((scheme, RDF.type, SKOS.ConceptScheme))
     collector.add((kraj, SKOS.inScheme, scheme))
     collector.add((okres, SKOS.inScheme, scheme))
-    collector.add((KRAJE[escape(data["krajCode"])], SKOS.broader, okres))
+    collector.add((kraj, SKOS.broader, okres))
     collector.add((okres, SKOS.narrower, kraj))
     # collector.add((scheme, SKOS.hasTopConcept, kraj))
     # collector.add((kraj, SKOS.topConceptOf, scheme))
-    collector.add((scheme, RDF.type, SKOS.ConceptScheme))
 
 def escape(value):
     return quote(value.replace(' ','_'))

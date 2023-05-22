@@ -67,11 +67,16 @@ def make_graph():
     graph.add((distribution, DCAT.accessURL,NSD['population.trig']))
     graph.add((distribution, DCT.title,Literal("RDF-trig distribution of the population dataset", lang="en")))
     
-    checksum = d423bb321b061681836d2eea74f6470e90df9d41
+    import subprocess
+
+    command = 'openssl sha256 population_datacube.trig'
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+    checksum, error = process.communicate()
+    checksum = checksum.decode('ascii').split('=')[-1].strip()
     checksum_node = BNode()
     graph.add((checksum_node, RDF.type, SPDX.Checksum))
     graph.add((checksum_node, SPDX.algorithm, SPDX.checksumAlgorithm_sha256))
-    graph.add((checksum_node, SPDX.checksumValue, Literal(checksum, datatype=XSD.hexBinar)))
+    graph.add((checksum_node, SPDX.checksumValue, Literal(checksum, datatype=XSD.hexBinary)))
 
 
     return graph

@@ -161,15 +161,23 @@ def create_observations(collector: Graph, dataset, data):
         resource = NSR["observation-" + str(index).zfill(3)]
         create_observation(collector, dataset, resource, row)
 
-
+scheme = NS.administrativeArea
 def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, RDF.type, QB.Observation))
     collector.add((resource, QB.dataSet, dataset))
-    collector.add((resource, NS.okres, OKRESY[escape(data["OkresCode"])]))
-    collector.add((resource, NS.kraj, KRAJE[escape(data["KrajCode"])]))
     collector.add((resource, NS.obor_pece, OBORY[escape(data["DruhZarizeni"])]))
     collector.add((resource, NS.number_of_care_providers, Literal(data["Count"], datatype=XSD.integer)))
-
+    kraj = KRAJE[escape(data["KrajCode"])]
+    okres = OKRESY[escape(data["OkresCode"])]
+    collector.add((resource, NS.okres, okres))
+    collector.add((resource, NS.kraj, kraj))
+    collector.add((scheme, RDF.type, SKOS.ConceptScheme))
+    collector.add((kraj, SKOS.inScheme, scheme))
+    collector.add((okres, SKOS.inScheme, scheme))
+    collector.add((kraj, SKOS.broader, okres))
+    collector.add((okres, SKOS.narrower, kraj))
+    # collector.add((scheme, SKOS.hasTopConcept, kraj))
+    # collector.add((kraj, SKOS.topConceptOf, scheme))
 def escape(value):
     return quote(value.replace(' ','_'))
 
