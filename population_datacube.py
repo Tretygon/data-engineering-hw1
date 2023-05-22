@@ -80,6 +80,8 @@ def create_dimensions(collector: Graph):
     collector.add((okres, RDFS.label, Literal("County", lang="en")))
     collector.add((okres, SKOS.prefLabel, Literal("County")))
     collector.add((okres, RDFS.range, XSD.string))
+    graph.add((kraj, RDF.type, SKOS.Concept))
+    graph.add((okres, RDF.type, SKOS.Concept))
 
     kraj = NS.kraj
     collector.add((kraj, RDF.type, RDFS.Property))
@@ -90,15 +92,7 @@ def create_dimensions(collector: Graph):
     collector.add((kraj, SKOS.prefLabel, Literal("Region")))
     collector.add((kraj, RDFS.range, XSD.string))
 
-    administrativeArea = NS.administrativeArea
-    collector.add((administrativeArea,RDF.type, SKOS.Concept))
-    collector.add((kraj, SKOS.broader, administrativeArea))
-    collector.add((administrativeArea, SKOS.narrower, kraj))
-    collector.add((okres, SKOS.broader, administrativeArea))
-    collector.add((administrativeArea, SKOS.narrower, okres))
-    collector.add((okres,SKOS.related, kraj))
-    collector.add((administrativeArea, RDFS.label, Literal("An area with its own administration", lang="en")))
-
+   
 
 
 
@@ -168,13 +162,26 @@ def create_observations(collector: Graph, dataset, data):
         resource = NSR["observation-" + str(index).zfill(3)]
         create_observation(collector, dataset, resource, row)
 
+scheme = NS.administrativeArea
 
 def create_observation(collector: Graph, dataset, resource, data):
     collector.add((resource, RDF.type, QB.Observation))
     collector.add((resource, QB.dataSet, dataset))
-    collector.add((resource, NS.okres, OKRESY[escape(data["okresCode"])]))
-    collector.add((resource, NS.kraj, KRAJE[escape(data["krajCode"])]))
+    kraj = KRAJE[escape(data["krajCode"])]
+    okres = OKRESY[escape(data["okresCode"])]
+    collector.add((resource, NS.okres, okres))
+    collector.add((resource, NS.kraj, kraj))
     collector.add((resource, NS.mean_population, Literal(data["population"], datatype=XSD.integer)))
+
+
+    collector.add((scheme, RDF.type, SKOS.ConceptScheme))
+    collector.add((kraj, SKOS.inScheme, scheme))
+    collector.add((okres, SKOS.inScheme, scheme))
+    collector.add((KRAJE[escape(data["krajCode"])], SKOS.broader, okres))
+    collector.add((okres, SKOS.narrower, kraj))
+    # collector.add((scheme, SKOS.hasTopConcept, kraj))
+    # collector.add((kraj, SKOS.topConceptOf, scheme))
+    collector.add((scheme, RDF.type, SKOS.ConceptScheme))
 
 def escape(value):
     return quote(value.replace(' ','_'))

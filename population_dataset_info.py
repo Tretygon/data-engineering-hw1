@@ -39,6 +39,8 @@ def make_graph():
     graph = rdflib.Graph()
     dataset = NSR.populationDataset
     
+    kraj = NS.kraj
+    okres = NS.okres
     me = BNode()
     graph.add((me, RDF.type, FOAF.Person))
     graph.add((me, FOAF.name,Literal("Tomas Zasadil")))
