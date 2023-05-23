@@ -1,18 +1,18 @@
 @prefix ns1: <https://example.org/ontology#> .
 @prefix ns2: <http://purl.org/dc/terms/> .
-@prefix ns3: <http://xmlns.com/foaf/0.1/> .
-@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix ns3: <http://www.w3.org/ns/prov#> .
+@prefix ns4: <http://xmlns.com/foaf/0.1/> .
 @prefix ns5: <https://example.org/ontology/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:N476dfd499eed4e70a47d10523d775070 {
-    ns5:datasetCreationActivity a ns4:Activity ;
-        ns4:qualifiedAssociation ns5:datasetCreationAssociation .
+_:N3bf3afcee4fe42efbd6295d89cd7ad86 {
+    ns5:datasetCreationActivity a ns3:Activity ;
+        ns3:qualifiedAssociation ns5:datasetCreationAssociation .
 
-    ns5:programmer a ns4:Role .
+    ns5:programmer a ns3:Role .
 
     <https://example.org/resources/observation-000> a qb:Observation ;
         qb:dataSet <https://example.org/resources/dataCubeInstance> ;
@@ -493,16 +493,16 @@ _:N476dfd499eed4e70a47d10523d775070 {
                 qb:measure ns1:mean_population ;
                 qb:measureDimension ns1:mean_population ] .
 
-    ns5:bob a ns4:Agent,
-            ns3:Person ;
-        ns3:givenName "Bob"^^xsd:string .
+    ns5:bob a ns3:Agent,
+            ns4:Person ;
+        ns4:givenName "Bob"^^xsd:string .
 
-    ns5:crappyDatabaseSystem a ns4:Agent,
-            ns4:SoftwareAgent ;
-        ns3:name "Excel"^^xsd:string .
+    ns5:crappyDatabaseSystem a ns3:Agent,
+            ns3:SoftwareAgent ;
+        ns4:name "Excel"^^xsd:string .
 
-    ns5:datasetCreationAssociation a ns4:Association ;
-        ns4:agent ns5:bob ;
+    ns5:datasetCreationAssociation a ns3:Association ;
+        ns3:agent ns5:bob ;
         ns5:database ns5:crappyDatabaseSystem .
 
     <https://example.org/okresy/CZ0201> skos:inScheme ns1:administrativeArea ;
@@ -844,7 +844,7 @@ _:N476dfd499eed4e70a47d10523d775070 {
         skos:inScheme ns1:administrativeArea .
 
     <https://example.org/resources/dataCubeInstance> a qb:DataSet,
-            ns4:Entity ;
+            ns3:Entity ;
         rdfs:label "Pocet obyvatel okresu"@cs,
             "County population"@en ;
         ns2:comment "Population in counties of Czechia" ;

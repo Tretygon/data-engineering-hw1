@@ -1,37 +1,37 @@
-@prefix ns1: <http://purl.org/dc/terms/> .
-@prefix ns2: <http://xmlns.com/foaf/0.1/> .
-@prefix ns3: <http://www.w3.org/ns/dcat#> .
-@prefix ns4: <https://spdx.org/rdf/terms/> .
+@prefix ns1: <http://www.w3.org/ns/dcat#> .
+@prefix ns2: <https://spdx.org/rdf/terms/> .
+@prefix ns3: <http://purl.org/dc/terms/> .
+@prefix ns4: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:N7f6a86638703445caeb05f48775b2465 {
-    <https://example.org/resources/populationDataset> a ns3:Dataset ;
+_:Nc42a6b79b68a45d2b2e7bb462d34f16c {
+    <https://example.org/resources/populationDataset> a ns1:Dataset ;
         rdfs:label "Population dataset"@en ;
-        ns1:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
-        ns1:creator _:Nb44c355e6eaf426da52c815f2562f1da ;
-        ns1:issued "2023-01-01"^^xsd:date ;
-        ns1:modified "2023-01-01"^^xsd:date ;
-        ns1:publisher _:Nb44c355e6eaf426da52c815f2562f1da ;
-        ns1:spatial <https://publications.europa.eu/resource/authority/country/CZE> ;
-        ns1:title "Population dataset"@en ;
-        ns3:distribution <https://example.org/resources/populationDatasetRDF> ;
-        ns3:keyword "czechia"@en,
+        ns3:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+        ns3:creator _:N0c42c1adb2af4971a740659046024571 ;
+        ns3:issued "2023-01-01"^^xsd:date ;
+        ns3:modified "2023-01-01"^^xsd:date ;
+        ns3:publisher _:N0c42c1adb2af4971a740659046024571 ;
+        ns3:spatial <https://publications.europa.eu/resource/authority/country/CZE> ;
+        ns3:title "Population dataset"@en ;
+        ns1:distribution <https://example.org/resources/populationDatasetRDF> ;
+        ns1:keyword "czechia"@en,
             "population"@en,
             "region statistics"@en ;
-        ns3:theme <http://eurovoc.europa.eu/3300>,
+        ns1:theme <http://eurovoc.europa.eu/3300>,
             <http://eurovoc.europa.eu/5860> .
 
-    <https://example.org/resources/populationDatasetRDF> a ns3:Distribution ;
-        ns1:title "RDF-trig distribution of the population dataset"@en ;
-        ns3:accessURL <https://example.org/files/population.trig> ;
-        ns3:mediaType <http://publications.europa.eu/resource/authority/file-type/RDF_TRIG> .
+    <https://example.org/resources/populationDatasetRDF> a ns1:Distribution ;
+        ns3:title "RDF-trig distribution of the population dataset"@en ;
+        ns1:accessURL <https://example.org/files/population.trig> ;
+        ns1:mediaType <http://publications.europa.eu/resource/authority/file-type/RDF_TRIG> .
 
-    [] a ns4:Checksum ;
-        ns4:algorithm ns4:checksumAlgorithm_sha256 ;
-        ns4:checksumValue "4aa2d29bf5950193fa25689e55d22c26ef475a0bf17ee3892763dfa66ded13ac"^^xsd:hexBinary .
+    [] a ns2:Checksum ;
+        ns2:algorithm ns2:checksumAlgorithm_sha256 ;
+        ns2:checksumValue "aa8063c2fed5774f83641936bb99807e9f0b58d8fc6079e283b78083a76f34fa"^^xsd:hexBinary .
 
-    _:Nb44c355e6eaf426da52c815f2562f1da a ns2:Person ;
-        ns2:name "Tomas Zasadil" .
+    _:N0c42c1adb2af4971a740659046024571 a ns4:Person ;
+        ns4:name "Tomas Zasadil" .
 }
 

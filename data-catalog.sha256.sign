@@ -1,6 +1,90 @@
-vNz6uNZn5NbZ/E+ibhMJ6h9YQtEhzHJQ7TJScP1QBydW8/qoTNm7P7RdtzAu5ZMu
-nSUlMozmz+oYQkvopqU/m/8B9gBKfCa9Kmfb4+YMJwf0h2AcNE4iL9wNJK9dY8/F
-q31hS3+Kqnc4JFwRCMy6TgajfLYBs+TsTH+u8lPpuQqJeBtmfSjKThMQz8guXviF
-+W79v1zQv9GUFG9MFLep+0qa2frq419vxy3ZeKQL6fPMk8ZtJAfJHypCslWKBUXb
-pRkciM050rVvhbyxpDHlL1AyiFeUVXqGLWGZy3XUbK9nsTcfPtztyvlPpWpANvpn
-i2KX5GdeHpQJ55LsnjuCOA==
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----C28FB77B5A9566F523EBB8C3232C8B6B"
+
+This is an S/MIME signed message
+
+------C28FB77B5A9566F523EBB8C3232C8B6B
+@prefix ns1: <http://www.w3.org/ns/dcat#> .
+@prefix ns2: <https://spdx.org/rdf/terms/> .
+@prefix ns3: <http://purl.org/dc/terms/> .
+@prefix ns4: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+_:Nc42a6b79b68a45d2b2e7bb462d34f16c {
+    <https://example.org/resources/populationDataset> a ns1:Dataset ;
+        rdfs:label "Population dataset"@en ;
+        ns3:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+        ns3:creator _:N0c42c1adb2af4971a740659046024571 ;
+        ns3:issued "2023-01-01"^^xsd:date ;
+        ns3:modified "2023-01-01"^^xsd:date ;
+        ns3:publisher _:N0c42c1adb2af4971a740659046024571 ;
+        ns3:spatial <https://publications.europa.eu/resource/authority/country/CZE> ;
+        ns3:title "Population dataset"@en ;
+        ns1:distribution <https://example.org/resources/populationDatasetRDF> ;
+        ns1:keyword "czechia"@en,
+            "population"@en,
+            "region statistics"@en ;
+        ns1:theme <http://eurovoc.europa.eu/3300>,
+            <http://eurovoc.europa.eu/5860> .
+
+    <https://example.org/resources/populationDatasetRDF> a ns1:Distribution ;
+        ns3:title "RDF-trig distribution of the population dataset"@en ;
+        ns1:accessURL <https://example.org/files/population.trig> ;
+        ns1:mediaType <http://publications.europa.eu/resource/authority/file-type/RDF_TRIG> .
+
+    [] a ns2:Checksum ;
+        ns2:algorithm ns2:checksumAlgorithm_sha256 ;
+        ns2:checksumValue "aa8063c2fed5774f83641936bb99807e9f0b58d8fc6079e283b78083a76f34fa"^^xsd:hexBinary .
+
+    _:N0c42c1adb2af4971a740659046024571 a ns4:Person ;
+        ns4:name "Tomas Zasadil" .
+}
+
+
+------C28FB77B5A9566F523EBB8C3232C8B6B
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIG8QYJKoZIhvcNAQcCoIIG4jCCBt4CAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggQxMIIELTCCAhUCFArWD2s9EjBhrvOELPSeBBGqLL0EMA0GCSqG
+SIb3DQEBCwUAMFoxCzAJBgNVBAYTAkNTMQ8wDQYDVQQHDAZQcmFndWUxKDAmBgNV
+BAoMH05EQkkwNDYgQ2VydGlmaWNhdGlvbiBVbmxpbWl0ZWQxEDAOBgNVBAMMB05E
+QkkwNDYwHhcNMjMwNTIzMTIwMTIyWhcNMjMwNjIyMTIwMTIyWjBMMQswCQYDVQQG
+EwJDWjEXMBUGA1UECgwObXkgbGlsIGNvbXBhbnkxJDAiBgNVBAMMG2h0dHBzOi8v
+dHJldHlnb24uZ2l0aHViLmlvLzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAOSqqNHXIA2Z3SJ/kDvQQstZPImbVFTubA9rTvcELtVQfGTNb6OxPprnu2Nj
+g3Cxk4ewn/QXqA0LsuwifYpMTUZgO4fTo67ZSy8BaqkSTUFjpeiGqCaLBdc5IWFH
+CY0UQO2U4NLWyE0bESLpv8trhX3WwBopMMWZQy6oNojDxNKgGIjGjjJvxv+p/qfo
+gtguNY73yjD7f5Dv1hpWTl/Qp8iqJAx+HjUvz8CF5LqVhF36LyHYzgLSjETZFqe5
+IywjpzjqisidrNgIIo36/NxGVuLPcOBVyFDtqfQbk/y0ESLecHJzvyZEDRqg7w2G
+SeB8Vuk0l4Pvvwnf+Q1tHLU9oe0CAwEAATANBgkqhkiG9w0BAQsFAAOCAgEAkQWk
+AdmSxPW134YwYZzwOcOl/oxZ2gkwgQf0exyQnYMShNvpdC1/k2rIRqpJgCN6Uo/4
+aq6BGrkyN+BZIKi2EHvH0BzGY+eAa8Rby6rIkFtnPbtj8MVRICkqsEZaLhlW3NnI
+PgBJrxCrp7miLf1ABL3GhVpYkcBRZVyutU6gX3He9zjVYZPbmbl0JrMVK9zyrkOc
+rV40ccGwmaRoh0ulrZCbKTarVEaM244uNRMS/528bYLVTKFLgB/B5VNaB0uskMfH
+0ZaL5Lyel8apRKV4ozjh5DjsvkS4LQxZS/GeDGGlTX4zYnvWoORb8BetdcPrZyG8
+Jnn+B/x4o5A3Yhk+BkWhp7rLeQcY4/wwBuHNUxj1tqRONV2KqFS3/pWlUb4K7ZFi
+eJBSjnQQZ1vJblx74smyNdGrISPPsE7tNZJuk61QnxldlO/snJS0Vp4nPqfdaIyb
+//8bal+p1PRqotZ9tMiewUngGXSMsXwK3OgbIzB51mnCLY2E1zjYKA3jQHZWBCZE
+MRC7lTqP0GYt5xIlMIHRSqTvlGubqcOei4/3Y2XQ+0b8XR9O6C72YyI/3I5zmTPj
+wbJY5zeErbGjpdopFNPlvenwGlhcboXh0buzLfBEIV18tKAlQTttWsqZuyDsXFiF
+h6NPmJHbCBdwQjOhFBer2WLgwV1nfGqNZVtJITwxggKEMIICgAIBATByMFoxCzAJ
+BgNVBAYTAkNTMQ8wDQYDVQQHDAZQcmFndWUxKDAmBgNVBAoMH05EQkkwNDYgQ2Vy
+dGlmaWNhdGlvbiBVbmxpbWl0ZWQxEDAOBgNVBAMMB05EQkkwNDYCFArWD2s9EjBh
+rvOELPSeBBGqLL0EMA0GCWCGSAFlAwQCAQUAoIHkMBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIzMDUyMzE1NTYwNVowLwYJKoZIhvcN
+AQkEMSIEICLbyvjwRhG+HoBmqDurKnIXFapi5+P7iFnP9HNaWIhdMHkGCSqGSIb3
+DQEJDzFsMGowCwYJYIZIAWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIw
+CgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsO
+AwIHMA0GCCqGSIb3DQMCAgEoMA0GCSqGSIb3DQEBAQUABIIBAEh2DfqQxroz6UpK
+PYQFFcehS6kJZpBDpFhZHRM3gAfqKutFlgw/HYhEcgIRe5rFEMgtzaTMtB2vpIWl
+zbMf9QA9S+3C4ua0jYc27d2+OXOlwrO5U0lyo9cptVHo6zsG9Kl2I5vbOE6L7NGF
+lrPiDYW17H92TxlEOBRluY0n4o9fccIDo834lmnZvIvt/b08H0cn58yvyqECq8q4
+AG4Y6kCyG962XGIv6MHntKuVFTzc/SW/BEoZXuRQ4N0zU1IeQ1/dW7Ee7matOnbA
+9kTGgsmiaeU8ruZ9gcxVKNezLTbitkGhec0A3Q4+V3JEb/IQkcVaR4zrJ0tsqfZE
+/829oy4=
+
+------C28FB77B5A9566F523EBB8C3232C8B6B--
+
